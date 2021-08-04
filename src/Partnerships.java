@@ -1,7 +1,7 @@
 import java.io.PipedOutputStream;
 import java.util.ArrayList;
 
-public class Partnerships {
+public class    Partnerships {
 
     public static void main(String[] args) {
 
