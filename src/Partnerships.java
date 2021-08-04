@@ -32,7 +32,7 @@ public class    Partnerships {
             System.out.println(nani);
         }
 
-        System.out.println(possiblePartnerships.size() + " partnetships");
+        System.out.println(possiblePartnerships.size() + " partnertships");
 
     }
 
