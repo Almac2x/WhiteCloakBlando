@@ -5,9 +5,13 @@ public class Factorial {
 
 
       Scanner scanner = new Scanner(System.in);
-
+        System.out.print("# Of Cigarret: ");
       double cigarette = scanner.nextInt();
+        System.out.println("# Of Ciggaret Butt: ");
+
       double cigarretteButt = scanner.nextInt();
+
+
       double totalCigarretes = cigarette;
 
        double cigarretesFromButts = 0;
