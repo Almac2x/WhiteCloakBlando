@@ -33,7 +33,7 @@ public class Mask {
     }
 
     public static String removesVowels(String paragraph){
-        return paragraph.replaceAll("[aeiouAEIOU]","");
+        return paragraph.replaceAll("[aeiou]\\GI","");
     }
     public static String removeConsonants(String paragraph){
 
