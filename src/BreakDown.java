@@ -9,15 +9,19 @@ public class BreakDown {
 
     public static void main(String[] args) {
 
-        String decipher = ".-.--";
+        String decipher = ".-..";
 
         String fileContent =  readFile("src//WorseCode.txt");
         var woreseCodeMap = createMorseCodeMap(fileContent);
 
-        Break(decipher,woreseCodeMap);
+        var possible = new HashMap<String,String>();
+
+          possible = breakdownMethod(decipher,woreseCodeMap, possible);
+
+          printMap(possible);
     }
 
-    public static String Break(String breakdown, HashMap<String,String> map){
+    public static HashMap<String,String> breakdownMethod(String breakdown, HashMap<String,String> morseMap, HashMap<String,String> possibleMap) {
 
         String cutRightToLeft = breakdown;
         String cutLeftToRight = breakdown;
@@ -26,13 +30,20 @@ public class BreakDown {
         if(breakdown.length() > 4){
             String toRecur = breakdown.substring(4);
             String toRecur2 = breakdown.substring(0,4);
-            Break(toRecur2,map);
-            Break(toRecur,map);
-        }else if(breakdown.length()<=0){
-            System.out.println("stop");
-        }
+            breakdownMethod(toRecur2,morseMap,possibleMap);
+            breakdownMethod(toRecur,morseMap,possibleMap);
 
-       /* do {
+        }else if(breakdown.length()>0 && breakdown.length()<5){
+
+            if(!possibleMap.containsKey(breakdown)){
+                String get = morseMap.get(breakdown);
+                possibleMap.put(get,Integer.toString(++i));
+            }
+            breakdownMethod(cutRightToLeft.substring(0,cutRightToLeft.length()-1),morseMap,possibleMap); // Removes last index and recurse
+            breakdownMethod(cutRightToLeft.substring(1),morseMap,possibleMap); // Removes first index
+
+
+             /* do {
 
             if(cutLeftToRight.length() == 0  || cutLeftToRight.length()== 0  ){
 
@@ -54,8 +65,12 @@ public class BreakDown {
 
 
         } while(true);*/
+        }
+        else{
 
-        return "nani";
+        }
+
+        return possibleMap;
     }
 
     public static HashMap<String, String>  createMorseCodeMap(String string){ // I can turn this to recursion
