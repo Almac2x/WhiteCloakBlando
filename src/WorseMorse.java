@@ -16,7 +16,7 @@ public class WorseMorse {
 
         var possible = new HashMap<String,String>();
         // input string
-        final String decipher = "----";
+        final String decipher = "....-";
 
         int starting_index = 0;
          possible = breadDown(decipher, starting_index, "",woreseCodeMap,possible);
@@ -30,22 +30,6 @@ public class WorseMorse {
      public static HashMap breadDown(String toDecipher, int starting_index, String previousString, HashMap<String,String> map, HashMap<String,String> possible)
         {
 
-            if(toDecipher.length() > 4){ // if String index is greater than 4
-
-                if (starting_index == toDecipher.length()) {
-                    System.out.println(previousString + "yes");
-                    possible.put(previousString, Integer.toString(starting_index));
-                }
-
-                for (int j = toDecipher.length() - 1; j >= starting_index; j--)
-
-                {
-                    String subString =  map.get(toDecipher.substring(starting_index, j + 1));
-
-                    breadDown(toDecipher.substring(0,4), j + 1, (previousString + subString),map,possible);
-                }
-
-            }
 
                 if (starting_index == toDecipher.length()) {
                     System.out.println(previousString);
@@ -57,7 +41,11 @@ public class WorseMorse {
                 {
                    String subString =  map.get(toDecipher.substring(starting_index, j + 1));
 
-                    breadDown(toDecipher, j + 1, (previousString + subString),map,possible);
+                    if (subString !=(null)){
+                        breadDown(toDecipher, j + 1, (previousString + subString),map,possible);
+                }
+
+
                 }
 
             return possible;

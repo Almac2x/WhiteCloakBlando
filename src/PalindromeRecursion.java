@@ -21,7 +21,6 @@ public class PalindromeRecursion {
             System.out.println(string + " is not a Palindrome");
 
     }
-
     public static boolean drome(String word,int len){
 
         if(len <= 1){
